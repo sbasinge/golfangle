@@ -2,8 +2,8 @@
 
 /* Services */
 
-//var host = "http://localhost:8080\:8080/golfplus";
-var host = "https://golfplus-basinc.rhcloud.com";
+var host = "http://localhost:8080\:8080/golfplus";
+//var host = "https://golfplus-basinc.rhcloud.com";
 var teetimeSrc = host+"/rest/teetimes/:id";
 
 angular.module('golfangle.services', ['ngResource']).
