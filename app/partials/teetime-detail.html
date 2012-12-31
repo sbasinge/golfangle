@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+    
+    </div>
+    <div class="span10">
+      <!--Body content-->
+		<h2>Teetime detail for {{teetime.course.name}}</h2>
+
+<div class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
+		<div class="controls span2">
+			<div>
+				<div>Course Name: {{teetime.course.name}}</div>
+				<div>Date: {{teetime.date | date:'medium'}}</div>
+			</div>
+	<!-- Add a header box with teetime details like date/time, course, teeset -->
+			<div>
+				<div class="btn-group">
+				  <button class="btn btn-mini">Tee Sets</button>
+				  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu">
+				    <!-- dropdown menu links -->
+					<li ng-repeat="teeSet in teetime.course.teeSets"><span>{{teeSet.teeType}}&nbsp;&nbsp;{{teeSet.courseRating}}&nbsp;&nbsp;{{teeSet.slopeRating}}</span></li>
+				  </ul>
+				</div>			
+				<div>TeeSet Selected: {{teetime.teeSet.teeType}}</div>
+			</div>
+			<div>Number of Spots: {{teetime.numPlayers}}</div>
+			<div class="checkbox disabled">Notifications On?: <input disabled="disabled" type="checkbox" value="{{teetime.notificationOn}}"/></div>
+		</div>
+<!-- Add a table with the players names, courseindex and score if reported. -->
+    <div class="span10">
+      <!--Body content-->
+
+        <table class="table table-striped table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th style="width:150px" ></i>&nbsp;&nbsp;Name</th>
+                    <th style="width:150px" ></i>&nbsp;&nbsp;Course Index</th>
+                    <th style="width:150px" ></i>&nbsp;&nbsp;Best Ball Index</th>
+                    <th style="width:150px"> &nbsp;&nbsp;Gross Score</th>
+                    <th style="width:150px"> &nbsp;&nbsp;Adjusted Score</th>
+                    <th style="width:150px"> &nbsp;&nbsp;Counter?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="participant in teetime.participants">
+                    <td style="width:150px">
+                    	{{participant.user.name}}
+                    </td>
+                    <td style="width:150px">
+                    	{{participant.courseIndex}}
+                    </td>
+                    <td style="width:150px">
+                    	{{participant.bestBallIndex}}
+                    </td>
+                    <td style="width:150px">
+                    	{{participant.score.grossScore}}
+                    </td>
+                    <td style="width:150px">
+                    	{{participant.score.adjustedScore}}
+                    </td>
+                    <td style="width:150px">
+                    	{{participant.score.counter}}
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+
+    </div>
+    </div>
+  </div>
+</div>
