@@ -11,10 +11,15 @@ angular.module('golfangle.filters', []).
   filter('rangescott', function() {
       return function(total, numberPerPage) {
           var input = [];
-          total = parseInt(total/numberPerPage)+1;
-          for (var i=0; i<total; i++)
-              input.push(i);
+          var remainder = total % numberPerPage;
+          total = parseInt(total/numberPerPage);
+          if (total > 1) {
+              for (var i=0; i<total; i++)
+                  input.push(i);
+              if (remainder > 1)
+            	  input.push(total+1);
+          }
           return input;
-      };    }
-  );
+      };    
+  });
 ;

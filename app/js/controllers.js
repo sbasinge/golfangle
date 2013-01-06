@@ -49,3 +49,38 @@ function TeeTimeDetailCtrl($scope, $routeParams, TeeTimeService) {
 //	    $scope.mainImageUrl = imageUrl;
 //	  }
 }
+
+function UserCtrl($scope, $routeParams, UserService) {
+	$scope.numberPerPage = 5;
+	$scope.pageNumber=0;
+	$scope.orderBy = 'username';
+	$scope.orderAsc = true;
+    var users = UserService.query({limit:$scope.numberPerPage, orderBy: $scope.orderBy, orderAsc: $scope.orderAsc});
+    $scope.users = users;
+
+    $scope.doGotoPage = function(pageNumber) {
+        $scope.users = UserService.query({limit:$scope.numberPerPage, skip: pageNumber*$scope.numberPerPage, orderBy: $scope.orderBy, orderAsc: $scope.orderAsc});
+    };
+
+    $scope.updatePageNumber = function(pageNumber) {
+        if (pageNumber >= 0 && pageNumber*$scope.numberPerPage < $scope.users.count) {
+            $scope.pageNumber = pageNumber;
+            this.doGotoPage($scope.pageNumber);
+        }
+    };
+    
+    $scope.changeOrderProp = function(orderProp) {
+    	if ($scope.orderBy === orderProp) {
+    		$scope.orderAsc = !$scope.orderAsc;
+    	} else {
+    		$scope.orderAsc = true;
+    	}
+    	$scope.orderBy = orderProp;
+        $scope.pageNumber = 0;
+        $scope.users = UserService.query({limit:$scope.numberPerPage, skip: 0, orderBy: $scope.orderBy, orderAsc: $scope.orderAsc});
+    };
+}
+
+function UserDetailCtrl($scope, $routeParams, UserService) {
+	
+}

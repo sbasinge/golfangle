@@ -16,7 +16,7 @@
         </div>
 
         <div>
-            <span>Total Count {{teetimes.count}}</span>
+            <span>Total Count {{users.count}}</span>
             <div>Page Number: {{pageNumber}}</div>
             <div>Order By: {{orderBy}}</div>
             <div>Order Asc: {{orderAsc}}</div>
@@ -28,28 +28,29 @@
         <table class="table table-striped table-condensed table-hover">
             <thead>
                 <tr>
-                    <th style="width:150px" ng-click="changeOrderProp('id')"><i ng-class="{'icon-arrow-up': orderBy == 'id' && orderAsc, 'icon-arrow-down': orderBy == 'id' && !orderAsc}" ></i>&nbsp;&nbsp;ID</th>
-                    <th style="width:300px" ng-click="changeOrderProp('course.name')"><i ng-class="{'icon-arrow-up': orderBy == 'course.name' && orderAsc, 'icon-arrow-down': orderBy == 'course.name' && !orderAsc}" ></i>&nbsp;&nbsp;Name</th>
-                    <th style="width:300px" ng-click="changeOrderProp('date')"><i ng-class="{'icon-arrow-up': orderBy == 'date' && orderAsc, 'icon-arrow-down': orderBy == 'date' && !orderAsc}" ></i>&nbsp;&nbsp;Date</th>
-                    <th style="width:150px" ng-click="changeOrderProp('numPlayers')"><i ng-class="{'icon-arrow-up': orderBy == 'numPlayers' && orderAsc, 'icon-arrow-down': orderBy == 'numPlayers' && !orderAsc}" ></i>&nbsp;&nbsp;# Players</th>
+                    <th style="width:150px" ng-click="changeOrderProp('username')"><i ng-class="{'icon-arrow-up': orderBy == 'username' && orderAsc, 'icon-arrow-down': orderBy == 'username' && !orderAsc}" ></i>&nbsp;&nbsp;Username</th>
+                    <th style="width:300px" ng-click="changeOrderProp('name')"><i ng-class="{'icon-arrow-up': orderBy == 'name' && orderAsc, 'icon-arrow-down': orderBy == 'name' && !orderAsc}" ></i>&nbsp;&nbsp;Name</th>
+                    <th style="width:300px" ng-click="changeOrderProp('handicap')"><i ng-class="{'icon-arrow-up': orderBy == 'handicap' && orderAsc, 'icon-arrow-down': orderBy == 'handicap' && !orderAsc}" ></i>&nbsp;&nbsp;Handicap</th>
+                    <th style="width:150px" ng-click="changeOrderProp('email')"><i ng-class="{'icon-arrow-up': orderBy == 'email' && orderAsc, 'icon-arrow-down': orderBy == 'email' && !orderAsc}" ></i>&nbsp;&nbsp;# EMail</th>
                     <th style="width:500px">TBD</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="teetime in teetimes.objects">
+                <tr ng-repeat="user in users.objects">
                     <td style="width:150px">
-                    	<a href="#/teetimes/get/{{teetime.id}}">{{teetime.id}}</a>
+                    	<a href="#/users/get/{{user.username}}">{{user.username}}</a>
                     </td>
                     <td style="width:300px">
-                        <p>{{teetime.course.name}}</p>
+                        <p>{{user.name}}</p>
                     </td>
                     <td style="width:300px">
-                        <p>{{teetime.date | date:'medium'}}</p>
+                        <p>{{user.handicap}}</p>
                     </td>
                     <td style="width:150px">
-                        <p>{{teetime.numPlayers}}</p>
+                        <p>{{user.email}}</p>
                     </td>
                     <td style="width:300px">
+                        <p>{{user.phone}}</p>
                     </td>
                 </tr>
             </tbody>
@@ -58,8 +59,8 @@
                     <div class="pagination pagination-centered" >
                         <ul>
                             <li ng-class="{disabled: pageNumber == 0}" ng-cloak><a ng-click="updatePageNumber(pageNumber-1)">Prev</a></li>
-                            <li ng-class="{active: i == pageNumber}" ng-repeat="i in teetimes.count|rangescott:numberPerPage" ng-cloak><a ng-click="updatePageNumber($index)">{{$index+1}}</a></li>
-                            <li ng-class="{disabled: (pageNumber+1)*numberPerPage >= teetimes.count}" ng-cloak><a ng-click="updatePageNumber(pageNumber+1)">Next</a></li>
+                            <li ng-class="{active: i == pageNumber}" ng-repeat="i in users.count|rangescott:numberPerPage" ng-cloak><a ng-click="updatePageNumber($index)">{{$index+1}}</a></li>
+                            <li ng-class="{disabled: (pageNumber+1)*numberPerPage >= users.count}" ng-cloak><a ng-click="updatePageNumber(pageNumber+1)">Next</a></li>
                         </ul>
                     </div>
                 </td>

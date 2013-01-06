@@ -11,7 +11,7 @@ describe('teetimeService', function() {
 	beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $injector) {
 		//mock the Pet factory results
 		$httpBackend = _$httpBackend_;
-		$httpBackend.expectJSONP(host+'/rest/teetimes/list?callback=JSON_CALLBACK&limit=10&skip=0').respond({count:174,teetimes:[{_id:'50429d722849c47987b3e817',latitude:32.843,Date:'1970-01-16T11:54:14.400Z',name:'Wally',longitude:-117.1507,description:'Siberian Husky'}]});
+		$httpBackend.expectJSONP(host+'/rest/teetimes?callback=JSON_CALLBACK&limit=10&orderAsc=true&orderBy=date&skip=0').respond({count:174,teetimes:[{_id:'50429d722849c47987b3e817',latitude:32.843,Date:'1970-01-16T11:54:14.400Z',name:'Wally',longitude:-117.1507,description:'Siberian Husky'}]});
 		scope = $rootScope.$new();
 		TeeTimeService = $injector.get('TeeTimeService'); 
 	})); 

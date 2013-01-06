@@ -6,6 +6,8 @@ angular.module('golfangle', ['golfangle.filters', 'golfangle.services', 'golfang
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/teetimes/list', {templateUrl: 'partials/teetimes.html', controller: TeeTimeCtrl});
     $routeProvider.when('/teetimes/get/:id', {templateUrl: 'partials/teetime-detail.html', controller: TeeTimeDetailCtrl});
-    $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.when('/users/list', {templateUrl: 'partials/users.html', controller: UserCtrl});
+    $routeProvider.when('/users/get/:id', {templateUrl: 'partials/teetime-detail.html', controller: UserDetailCtrl});
+    $routeProvider.otherwise({redirectTo: '/teetimes/list'});
   }])
 ;
