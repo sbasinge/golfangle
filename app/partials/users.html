@@ -31,8 +31,10 @@
                     <th style="width:150px" ng-click="changeOrderProp('username')"><i ng-class="{'icon-arrow-up': orderBy == 'username' && orderAsc, 'icon-arrow-down': orderBy == 'username' && !orderAsc}" ></i>&nbsp;&nbsp;Username</th>
                     <th style="width:300px" ng-click="changeOrderProp('name')"><i ng-class="{'icon-arrow-up': orderBy == 'name' && orderAsc, 'icon-arrow-down': orderBy == 'name' && !orderAsc}" ></i>&nbsp;&nbsp;Name</th>
                     <th style="width:300px" ng-click="changeOrderProp('handicap')"><i ng-class="{'icon-arrow-up': orderBy == 'handicap' && orderAsc, 'icon-arrow-down': orderBy == 'handicap' && !orderAsc}" ></i>&nbsp;&nbsp;Handicap</th>
-                    <th style="width:150px" ng-click="changeOrderProp('email')"><i ng-class="{'icon-arrow-up': orderBy == 'email' && orderAsc, 'icon-arrow-down': orderBy == 'email' && !orderAsc}" ></i>&nbsp;&nbsp;# EMail</th>
-                    <th style="width:500px">TBD</th>
+                    <th style="width:150px" ><i ng-class="{'icon-arrow-up': orderBy == 'email' && orderAsc, 'icon-arrow-down': orderBy == 'email' && !orderAsc}" ></i>&nbsp;&nbsp;Date</th>
+                    <th style="width:150px" ng-click="changeOrderProp('email')"><i ng-class="{'icon-arrow-up': orderBy == 'email' && orderAsc, 'icon-arrow-down': orderBy == 'email' && !orderAsc}" ></i>&nbsp;&nbsp;EMail</th>
+                    <th >Phone</th>
+                    <th >Club/Roles</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,13 +46,19 @@
                         <p>{{user.name}}</p>
                     </td>
                     <td style="width:300px">
-                        <p>{{user.handicap}}</p>
+                        <p>{{user.handicapHistory[0].handicap}}</p>
+                    </td>
+                    <td style="width:300px">
+                        <p>{{user.handicapHistory[0].date | date:'MM/dd/yyyy'}}</p>
                     </td>
                     <td style="width:150px">
                         <p>{{user.email}}</p>
                     </td>
                     <td style="width:300px">
                         <p>{{user.phone}}</p>
+                    </td>
+                    <td style="width:300px">
+                        <p>{{user.clubRoles[0].club.name}} - {{user.clubRoles[0].role.name}}</p>
                     </td>
                 </tr>
             </tbody>
